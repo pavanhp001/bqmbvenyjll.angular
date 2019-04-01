@@ -1,0 +1,27 @@
+<h2>courses works!</h2>
+<h2 [textContent]="title"></h2>
+<!--<img src="{{imageURL}}" /> -->
+<!-- <img [src]="imageURL" /> -->
+<p>{{CustomPipetext | summary:20}}</p>
+
+<table>
+  <tr>
+    <td [attr.colspan]="colspan">data</td>
+    <!--if we write [colspan] we get Can't bind to 'colspan' since it isn't a known property of 'td'. ("-->
+   <!-- button.btn.btn-primary -->
+   <!-- <button class="btn btn-primary"> Save </button> -->
+   <!-- <button class="btn btn-primary" [class.active]="isActive"> Save </button> -->
+   <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'red'"> Save </button><br>
+   <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'red'" (click)="onSave($event)"> SaveClick </button><br>
+    <div (click)="onDivClicked($event)">
+      <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'red'" (click)="onSave($event)"> Event buble botton </button>
+    </div>
+    <!-- Template variable Example -->
+   <span>keyup.enter event</span> <input (keyup.enter)="onKeyUp($event)">
+   <span>keyup.enter event</span> <input #email (keyup.enter)="onKeyUpemail(email.value)">
+
+   <!-- two way binding Example -->
+   <span>Two way binding Example </span> <input [(ngModel)]="emailData">
+   <p>{{emailData | lowercase}}</p>
+  </tr>
+</table> 

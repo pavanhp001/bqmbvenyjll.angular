@@ -1,0 +1,54 @@
+<div>
+  <label for="fname">Add Employee:</label>
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="submitEmp()">
+  <div class="form-group">
+    <label for="Employee name">Employee name</label>
+    <input type="text" name="name" id="name" 
+      formControlName="name"
+      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
+      maxlength="30">
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+      <div *ngIf="f.name.errors.required" class="field-validation-error">
+        Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Location">Location</label>
+    <input type="text" name="location" id="location" 
+      formControlName="location" 
+      maxlength="30">
+    <div *ngIf="submitted && f.location.errors" 
+    class="field-validation-error">
+      <div *ngIf="f.location.errors.required" class="field-validation-error">Location is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Email">Email</label>
+    <input type="email" name="email" id="email" 
+      formControlName="email" 
+      maxlength="30">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required"  class="field-validation-error">Email is required</div>
+      <div *ngIf="f.email.errors.email" class="field-validation-error">Provide valid email id</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Mobile">Mobile</label>
+    <input type="text" name="mobile" id="mobile" 
+      formControlName="mobile" maxlength="10">
+    <div *ngIf="submitted && f.mobile.errors" 
+      class="invalid-feedback">
+      <div *ngIf="f.mobile.errors.required" class="field-validation-error">Mobile is required</div>
+      <div *ngIf="f.mobile.errors.pattern" class="field-validation-error">Provide valid Mobile Number</div>
+    </div>
+  </div>
+  
+  <div *ngIf="!isEditable" class="form-group">
+    <button class="button buttonShap" type="submit" id="add">Submit</button>
+  </div>
+  <div *ngIf="isEditable" class="form-group">
+      <button class="button buttonShap" type="submit" id="update">Update</button>
+    </div>
+</form>
